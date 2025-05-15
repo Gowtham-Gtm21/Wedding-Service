@@ -8,8 +8,8 @@
 ### Create a virtualenv
 
 ```bash
-  py -m venv .event
-  .event\Scripts\activate.bat
+  py -m venv myworld
+  myworld\Scripts\activate.bat
 ```
 ### Install dependencies
 
