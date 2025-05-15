@@ -1,0 +1,33 @@
+from django.urls import path 
+from . import views 
+
+urlpatterns =[
+    path('',views.index,name='index'),
+    path('index/',views.index,name='index'),
+    path('blog/',views.blog,name='blog'),
+    path('review/',views.review,name='review'),
+    path('makeup/',views.makeup,name='makeup'),
+    path('decorator/',views.decorator,name='decorator'),
+    path('invitation/',views.invitation,name='invitation'),
+    path('catering/',views.catering,name='catering'),
+    path('gift/',views.gift,name='gift'),
+    path('wear/',views.wear,name='wear'),
+    path('jewellery/',views.jewellery,name='jewellery'),
+    path('photographer/',views.photographer,name='photographer'),
+    path('hotel/',views.hotel,name='hotel'),
+    path('choreographer/',views.choreographer,name='choreographer'),
+    path('mehendi/',views.mehendi,name='mehendi'),
+    path('djs/',views.djs,name='djs'),
+    path('mak/',views.mak,name='mak'),
+    path('dec/',views.dec,name='dec'),
+    path('inv/',views.inv,name='inv'),
+    path('cat/',views.cat,name='cat'),
+    path('gif/',views.gif,name='gif'),
+    path('wea/',views.wea,name='wea'),
+    path('jew/',views.jew,name='jew'),
+    path('cho/',views.cho,name='cho'),
+    path('ven/',views.ven,name='ven'),
+    path('pho/',views.pho,name='pho'),
+    path('meh/',views.meh,name='meh'),
+    path('dj/',views.dj,name='dj'),
+]

@@ -1,0 +1,548 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .transparent-bg {
+        background-image: url("{% static 'index img/img.jpeg' %}");
+        background-size: cover;
+        width: 100%;
+        height: 95vh;
+        color: #ffffff;
+        font-weight: 600;
+        background-position: center;
+    }
+
+    .transparent-bg h4 {
+        padding-top: 55vh;
+    }
+
+    .transparent-bg h1 {
+        font-size: 38px;
+    }
+
+    .transparent-bg span {
+        color: #eb1d4b;
+    }
+
+    .input[type="text"] {
+        box-shadow: 0px 12px 24px -1px rgba(0, 0, 0, 0.18);
+        border-color: rgba(7, 4, 14, 0);
+        border-radius: 10px;
+        block-size: 20px;
+        padding: 16px 25px;
+        outline: none;
+        text-align: center;
+        width: 400px;
+        max-width: 100%;
+    }
+
+    .container {
+        max-width: 1200px;
+        margin-top: 50px;
+    }
+
+    .row {
+        justify-content: space-around;
+        align-items: center;
+    }
+
+    .card {
+        width: 175px;
+        cursor: pointer;
+        text-align: center;
+        margin-bottom: 20px;
+        border: none;
+        box-shadow: 0 0 5px rgba(83, 82, 82, 0.89);
+    }
+
+    .card:hover {
+        box-shadow: 0 0 10px rgba(83, 82, 82, 0.89);
+    }
+
+    .card img {
+        height: 170px;
+        margin-top: 5px;
+        padding: 5px;
+        border-radius: 10px;
+    }
+
+    .Popular img {
+        width: 180px;
+        height: 250px;
+        object-fit: cover;
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .Popular img:hover {
+        transform: scale(1.03);
+    }
+
+    .card-container{
+        padding: 0 5px;
+    }
+
+    .why-card {
+        width: 270px;
+        background-color: #fff;
+        border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 40px 20px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        transition: transform 0.2s;
+    }
+
+    .why-card:hover {
+        transform: translateY(-5px);
+    }
+
+    .card-text {
+        font-size: 20px;
+        font-weight: 600;
+        color: #333;
+    }
+
+    .highlight {
+        font-weight: bold;
+        color: #212020;
+    }
+
+    .why-card img {
+        width: 100px;
+        margin-bottom: 15px;
+    }
+
+    .why-card:nth-child(1) { background-color: #e0f7fa; }
+    .why-card:nth-child(2) { background-color: #f3e1f5; }
+    .why-card:nth-child(3) { background-color: #e3f2fd; }
+    .why-card:nth-child(4) { background-color: #fff3e0; }
+
+    .support{
+        margin-top: 70px;
+        margin-bottom: 50px;
+    }
+
+    .image-section {
+        flex: 1;
+        display: flex;
+        justify-content: center;
+    }
+
+    .image-section img {
+        max-width: 80%;
+        height: auto;
+    }
+
+    .text-section {
+        flex: 1.5;
+        padding: 20px;
+    }
+
+    .text-section h3 {
+        color: #333;
+        margin-bottom: 15px;
+    }
+
+    .text-section ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        color: #555;
+    }
+
+    .text-section ul li {
+        display: flex;
+        align-items: center;
+        margin-bottom: 10px;
+    }
+
+    .text-section ul li::before {
+        content: "✔";
+        color: #eb1d4b;
+        margin-right: 10px;
+        font-size: 18px;
+    }
+
+    .button {
+        display: inline-block;
+        padding: 10px 28px;
+        background-color: #ea3150;
+        color: #fff;
+        border-radius: 5px;
+        font-size: 16px;
+        font-weight: bold;
+        text-align: center;
+        cursor: pointer;
+        text-decoration: none;
+        margin-top: 20px;
+        transition: background-color 0.3s ease;
+    }
+
+    @media(max-width: 1200px) {
+        .input[type="text"]{
+            width: 480px;
+            max-width: 100%;
+        }
+
+        .card {
+            width: 30%;
+        }
+
+        .card img {
+            height: 300px;
+        }
+
+        .card-title {
+            font-size: 24px;
+        }
+
+        .Popular {
+            width: 30%;
+        }
+
+        .Popular img {
+            width: 250px;
+            height: 280px;
+        }
+
+        .why-card {
+            width: 47%;
+            height: 300px;
+        }
+
+    }
+
+    @media(max-width: 855px) {
+        .transparent-bg h4{
+            font-size: 20px;
+        }
+
+        .transparent-bg h1{
+            font-size: 26px;
+        }
+
+        .input[type="text"]{
+            width: 380px;
+            max-width: 70%;
+        }
+
+        .card img {
+            height: 240px;
+        }
+
+        .card-title {
+            font-size: 20px;
+        }
+
+        .card:hover {
+            box-shadow: 0 0 10px rgba(83, 82, 82, 0.89);
+        }
+
+        .Popular img {
+            width: 220px;
+        }
+
+        .why-card {
+            width: 45%;
+            height: 280px;
+        }
+
+        .image-section img {
+            max-width: 120%;
+        }
+
+        .text-section h3 {
+            font-size: 20px;
+        }
+
+    }
+
+    @media(max-width: 550px) {
+        .transparent-bg h4{
+            font-size: 16px;
+        }
+
+        .transparent-bg h1{
+            font-size: 22px;
+        }
+
+        .input[type="text"]{
+            width: 350px;
+            max-width: 70%;
+            padding: 14px 25px;
+        }
+
+        .card {
+            width: 43%;
+        }
+
+        .card-title {
+            font-size: 17px;
+        }
+
+        .card img {
+            height: 220px;
+        }
+
+        .why-card {
+            width: 45%;
+            height: 260px;
+        }
+
+        .card-text {
+            font-size: 17px;
+        }
+
+        .Popular {
+            width: 45%;
+        }
+
+        .Popular img {
+            height: 240px;
+        }
+
+        .support{
+            flex-direction: column;
+        }
+
+        .image-section img {
+            max-width: 80%;
+        }
+
+        .text-section ul {
+            font-size: 18px;
+        }
+
+    }
+
+    @media(max-width: 450px) {
+        .transparent-bg h4{
+            font-size: 13px;
+        }
+
+        .transparent-bg h1{
+            font-size: 18px;
+        }
+
+        .input[type="text"]{
+            width: 320px;
+            max-width: 70%;
+            padding: 14px 25px;
+            font-size: 14px;
+        }
+
+        .card img {
+            height: 170px;
+        }
+
+        .why-card {
+            width: 42%;
+            height: 260px;
+        }
+
+        .card-text {
+            font-size: 14.5px;
+        }
+
+        .text-section h3 {
+            font-size: 15px;
+        }
+
+        .text-section ul {
+            font-size: 14px;
+        }
+
+        .button{
+            font-size: 14px;
+        }
+
+    }
+
+    @media(max-width: 380px) {
+        .transparent-bg h4{
+            font-size: 12px;
+        }
+
+        .transparent-bg h1{
+            font-size: 16px;
+        }
+
+        .card img {
+            height: 150px;
+        }
+
+        .card-title {
+            font-size: 15px;
+        }
+
+        .why-card {
+            width: 42%;
+            height: 270px;
+        }
+
+        .card-text {
+            font-size: 14px;
+        }
+
+    }
+
+</style>
+
+<div class="transparent-bg">
+    <div class="text-center">
+        <h4 class="mb-3">Hire best vendors such as Makeup, Caterers and so on.</h4>
+        <h1 class="mb-3">India's Largest <span>Wedding</span> Planning Platform</h1>
+        <input class="input" type="text" name="text" placeholder="Search for vendors">
+    </div>
+</div>
+
+<div class="container">
+    <h3 class="ms-2 mb-4">Wedding Categories</h3>
+    <div class="row g-2">
+        <div class="card">
+            <a href="{% url 'makeup' %}" class="nav-link">
+                <img src="{% static 'index img/img1.jpeg' %}" class="card-img-top">
+                <h5 class="card-title my-2">Makeup Artists</h5>
+            </a>
+        </div>
+        <div class="card">
+            <a href="{% url 'decorator' %}" class="nav-link">
+                <img src="{% static 'index img/img2.jpeg' %}" class="card-img-top">
+                <h5 class="card-title my-2">Decorators</h5>
+            </a>
+        </div>
+        <div class="card">
+            <a href="{% url 'invitation' %}" class="nav-link">
+                <img src="{% static 'index img/img3.jpeg' %}" class="card-img-top">
+                <h5 class="card-title my-2">Invitations</h5>
+            </a>
+        </div>
+        <div class="card">
+            <a href="{% url 'catering' %}" class="nav-link">
+                <img src="{% static 'index img/img4.jpeg' %}" class="card-img-top">
+                <h5 class="card-title my-2">Catering</h5>
+            </a>
+        </div>
+        <div class="card">
+            <a href="{% url 'wear' %}" class="nav-link">
+                <img src="{% static 'index img/img5.jpeg' %}" class="card-img-top">
+                <h5 class="card-title my-2">Wedding Wear</h5>
+            </a>
+        </div>
+        <div class="card">
+            <a href="{% url 'gift' %}" class="nav-link">
+                <img src="{% static 'index img/img6.jpeg' %}" class="card-img-top">
+                <h5 class="card-title my-2">Gifts</h5>
+            </a>
+        </div>
+        <div class="card">
+            <a href="{% url 'jewellery' %}" class="nav-link">
+                <img src="{% static 'index img/img7.jpeg' %}" class="card-img-top">
+                <h5 class="card-title my-2">Jewellery</h5>
+            </a>
+        </div>
+        <div class="card">
+            <a href="{% url 'photographer' %}" class="nav-link">
+                <img src="{% static 'index img/img8.jpeg' %}" class="card-img-top">
+                <h5 class="card-title my-2">Photographers</h5>
+            </a>
+        </div>
+        <div class="card">
+            <a href="{% url 'hotel' %}" class="nav-link">
+                <img src="{% static 'index img/img9.jpeg' %}" class="card-img-top">
+                <h5 class="card-title my-2">Venues</h5>
+            </a>
+        </div>
+        <div class="card">
+            <a href="{% url 'choreographer' %}" class="nav-link">
+                <img src="{% static 'index img/img10.jpeg' %}" class="card-img-top">
+                <h5 class="card-title my-2">Choreographers</h5>
+            </a>
+        </div>
+        <div class="card">
+            <a href="{% url 'mehendi' %}" class="nav-link">
+                <img src="{% static 'index img/img11.jpeg' %}" class="card-img-top">
+                <h5 class="card-title my-2">Mehendi Artists</h5>
+            </a>
+        </div>
+        <div class="card">
+            <a href="{% url 'djs' %}" class="nav-link">
+                <img src="{% static 'index img/img12.jpeg' %}" class="card-img-top">
+                <h5 class="card-title my-2">Djs</h5>
+            </a>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h3 class="ms-2 mb-4">Why HappyWedding?</h3>
+    <div class="row d-flex g-4 card-container">
+        <div class="why-card">
+            <img src="{% static 'index img/map.svg' %}" class="card-img-top">
+            <p class="card-text"><span class="highlight">2.8 Lakh+</span> best vendors across 40+ cities</p>
+        </div>
+        <div class="why-card">
+            <img src="{% static 'index img/ring.svg' %}" class="card-img-top">
+            <p class="card-text"><span class="highlight">2.3 million</span> connections with 60K+ vendors</p>
+        </div>
+        <div class="why-card">
+            <img src="{% static 'index img/smile.svg' %}" class="card-img-top">
+            <p class="card-text"><span class="highlight">20 Lakh+</span> and counting happy customers</p>
+        </div>
+        <div class="why-card">
+            <img src="{% static 'index img/review.svg' %}" class="card-img-top">
+            <p class="card-text">Choose <span class="highlight">best vendors</span> based on user reviews</p>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <h3 class="ms-2 mb-4">Popular Searches</h3>
+    <div class="row g-2">
+        <div class="col-6 col-md-4 col-lg-2 Popular text-center">
+            <img src="{% static 'index img/img13.jpeg' %}" alt="Decorators" class="img-fluid rounded">
+            <h5 class="card-title mt-2">Decorators</h5>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 Popular text-center">
+            <img src="{% static 'index img/img14.jpeg' %}" alt="Invitations" class="img-fluid rounded">
+            <h5 class="card-title mt-2">Invitations</h5>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 Popular text-center">
+            <img src="{% static 'index img/img15.jpeg' %}" alt="Bridal Wear" class="img-fluid rounded">
+            <h5 class="card-title mt-2">Bridal Wear</h5>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 Popular text-center">
+            <img src="{% static 'index img/img16.jpeg' %}" alt="Groom Wear" class="img-fluid rounded">
+            <h5 class="card-title mt-2">Venues</h5>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 Popular text-center">
+            <img src="{% static 'index img/img17.jpeg' %}" alt="Mehndi" class="img-fluid rounded">
+            <h5 class="card-title mt-2">Mehendi</h5>
+        </div>
+        <div class="col-6 col-md-4 col-lg-2 Popular text-center">
+            <img src="{% static 'index img/img18.jpeg' %}" alt="Catering" class="img-fluid rounded">
+            <h5 class="card-title mt-2">Catering</h5>
+        </div>
+    </div>
+</div>
+
+<div class="container support d-flex">
+    <div class="image-section">
+        <img src="{% static 'index img/img19.png' %}">
+    </div>
+    <div class="text-section">
+        <h3>Choose Wedassist and find your suitable vendor with our personal executive:</h3>
+        <ul>
+            <li>Get WedAssist to get an exclusive Relationship Executive</li>
+            <li>Our executive will understand your requirements for vendors</li>
+            <li>This executive will shortlist, contact & finalize vendors on your behalf</li>
+        </ul>
+        <a href="#" class="button">Explore now</a>
+    </div>
+</div>
+
+{% endblock %}

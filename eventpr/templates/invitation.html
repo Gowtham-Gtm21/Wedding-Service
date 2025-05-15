@@ -1,0 +1,125 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .transparent-bg {
+        background-image: url("{% static 'Categories/invitation.jpeg' %}");
+        background-size: cover;
+        width: 96%;
+        height:88vh;
+        background-position: center;
+    }
+
+    .row,.title{
+        margin-top: 40px;
+        justify-content: space-between;
+    }
+    
+    .badge,.review{
+        font-size: 16px;
+    }
+
+    span, .stars, .price{
+        color: #eb1d4b;
+    }
+
+    .place{
+        color: #454545;
+        font-size: 15px;
+        margin: -8px 0px;
+    }
+
+    .btn{
+        margin-top: -7px;
+    }
+
+    @media(max-width: 1150px) {
+        .transparent-bg {
+            height: 50vh;
+        }
+
+        .title{
+            margin-top: 20px;
+        }
+
+        .row{
+            justify-content: space-around;
+        }
+
+    }
+
+    @media(max-width: 550px) {
+        .transparent-bg {
+            height: 40vh;
+        }
+
+        h3{
+            font-size: 22px;
+        }
+
+        .description,.badge,.review,.btn{
+            font-size: 14px;
+        }
+
+        h4,.card-title,.price{
+            font-size: 18px;
+        }
+
+        p,h6{
+            font-size: 14px;
+        }
+        
+    }
+
+
+</style>
+
+<div class="container-fluid transparent-bg"></div>
+
+<div class="container">
+    <h3 class="title">Best Wedding Invitations</h3>
+    <h6 class="description my-3 text-secondary">Wedding Invitation Cards in all Indian cities Find premium and budget Wedding Invitation Card Designers and Printers. Get full quotations for Wedding Invitation Cards in all Indian cities, see Reviews, Photos, Invitation Card designs of Boxed, Unboxed cards, Digital E cards.</h6>
+    <div class="row">
+        {% for i in inv %}
+            <div class="event-card">
+                <div class="card">
+                    <img src="{{i.img.url}}" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.name}} <span class="badge text-light bg-danger position-absolute end-0 me-2">{{i.rate}}</span></h5>
+                        <p class="stars fs-5">&#9733;&#9733;&#9733;&#9733;&#9733;<span class="review text-secondary position-absolute end-0 me-2"> ({{i.review}} reviews)</span></p>
+                        <p class="place"><i class="fa-solid fa-location-dot"></i> {{i.place}}</p>
+                        <h5 class="card-text price mt-3">₹{{i.price}}<a href="{% url 'inv' %}" class="btn bg-danger text-light position-absolute end-0 me-2">View Deal</a></h5>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="container mb-5">
+    <h3 class="text-center">Best Wedding Invitations</h3>
+    <p class="my-4">Impress your wedding guests with the first look of your wedding by getting your wedding invitation designed by the best wedding invitation designers - Find these designers in all Indian cities listed down below. Go through their past work and reviews on their pages. Both luxurious and budget wedding invitation designers design the boxed, unboxed and digital wedding invitations. Contact your favourite ones via the provided contact details or ask for their quotations.</p>
+
+    <h4>Choose Beautiful Wedding Invitation Cards @ Happy Wedding</h4>
+    <p class="my-4">HappyWedding has a wide range of vendors who provide elegant and chic <span>Indian wedding invitation cards</span>  online, pre-designed cards for modern weddings, and <span>custom designs of wedding invitation cards </span> that will leave every guest privileged and enthralled. Planning a theme wedding? Our vendors are proficient in those too. Choose from a wide range according to your personal preference.</p>
+
+    <h4>Types of Various Wedding Invitation Card Services</h4>
+    <p class="my-4"> <span>Boxed Invitation Cards</span> - The tradition of boxed indian wedding invitation card is old but getting popular again in modern times. Distributing boxed invites is the latest trend and including sweets, chocolates, or other wedding goodies inside the box just makes it appear more lavish.</p>
+    <p class="my-4"> <span>Unboxed Invitation Cards</span> - These are the traditional wedding invitation cards which can be custom-made according to your preferences. They are artistic masterpieces in their own way and are comparatively less expensive than the boxed ones. Designs are traditional, modern, innovative and interesting.</p>
+    <p class="my-4"> <span>Digital E-invite</span> - In this digital age, most couples are also opting for digital e-invitation cards. They are a fun and practical way to invite relatives, friends and colleagues as you can send them over Whatsapp or Facebook in a single click.</p>
+    
+    <h4 class="mb-4">Other Wedding Services We Provide</h4>
+    <h6><span>Wedding Photographers:</span> Capture the event without missing any precious moment.</h6>
+    <h6><span>Bridal Designers:</span>  Design your trousseau as per the latest fashion trends.</h6>
+    <h6><span>Choreographers:</span> Learn some new moves for your wedding.</h6>
+    <h6><span>Wedding Videographers:</span> Today wedding videos beat Bollywood movies.</h6>
+    <h6><span>Mehndi Artists:</span> What's a bride without some gorgeous mehendi?</h6>
+    <h6><span>Wedding Decorators:</span> Choose modern or traditional, let every corner look fabulous.</h6>
+    <h6><span>Wedding Invitations:</span> The invitation for the big day has to be special.</h6>
+    <h6><span>Wedding Planners:</span> Leave the planning to the experts in the field.</h6>
+    <h6><span>Wedding Venues:</span> Choose the venue that best suits you.</h6>
+</div>
+
+{% endblock %}

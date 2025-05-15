@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .transparent-bg {
+        background-image: url("{% static 'Categories/gift.jpeg' %}");
+        background-size: cover;
+        width: 96%;
+        height:88vh;
+        background-position: center;
+    }
+
+    .row,.title{
+        margin-top: 40px;
+        justify-content: space-between;
+    }
+    
+    .badge,.review{
+        font-size: 16px;
+    }
+
+    span, .stars, .price{
+        color: #eb1d4b;
+    }
+
+    .place{
+        color: #454545;
+        font-size: 15px;
+        margin: -8px 0px;
+    }
+
+    .btn{
+        margin-top: -7px;
+    }
+
+    @media(max-width: 1150px) {
+        .transparent-bg {
+            height: 50vh;
+        }
+
+        .row{
+            justify-content: space-around;
+        }
+
+    }
+
+    @media(max-width: 550px) {
+        .transparent-bg {
+            height: 40vh;
+        }
+
+        h3{
+            font-size: 22px;
+        }
+
+        .description,.badge,.review,.btn{
+            font-size: 14px;
+        }
+
+        h4,.card-title,.price{
+            font-size: 18px;
+        }
+
+        p,h6{
+            font-size: 14px;
+        }
+        
+    }
+
+
+</style>
+
+<div class="container-fluid transparent-bg"></div>
+
+<div class="container">
+    <h3 class="title">Best Wedding Gifts</h3>
+    <h6 class="description my-3 text-secondary">Find the List of Best Wedding Gifts Providers.</h6>
+    <div class="row">
+        {% for i in gif %}
+            <div class="event-card">
+                <div class="card">
+                    <img src="{{i.img.url}}" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.name}} <span class="badge bg-danger position-absolute end-0 me-2">{{i.rate}}</span></h5>
+                        <p class="stars fs-5">&#9733;&#9733;&#9733;&#9733;&#9733;<span class="review text-secondary position-absolute end-0 me-2"> ({{i.review}} reviews)</span></p>
+                        <p class="place"><i class="fa-solid fa-location-dot"></i> {{i.place}}</p>
+                        <h5 class="card-text price mt-3">{{i.price}}<a href="{% url 'gif' %}" class="btn bg-danger text-light position-absolute end-0 me-2">View Deal</a></h5>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="container mb-5">
+    <h3 class="text-center">Best Wedding Gifts</h3>
+    <p class="my-4">Weddings have always been a grand affair marking a beautiful day in the lives of two families uniting. Right from pre-wedding functions to receptions - it's all about fun, food, decoration, & wedding gifts. Celebrate this day of true love with memorable gifts that add a smile to the faces of your loved ones. Express your love in style and make this beautiful occasion a little extra special with the best wedding gifts. Worry not! We've got you covered. Let's go through our exclusive guide that helps you choose an unforgettable gift for this special day.</p>
+
+    <h4>choosing wedding gifts @ Happy Wedding</h4>
+    <p class="my-4">It's the ultimate task of the constant bombing of ideas when it comes to choosing wedding gifts for your wedding or your loved ones. It's a space in which you want to stand out and make a mark by presenting something <span>unique and trendy as a wedding gifts</span>. It's a struggle and trust us that you don't wish to spend too much of your wedding preparation time thinking about it. So here, we've brought you top things to consider before deciding on choosing wedding gifts for your wedding. Let's look at the following things to keep in mind while choosing the best wedding gift.</p>
+
+    <h4>some wedding gifts trend spotted in wedding</h4>
+    <p class="my-4"> <span>Crockery</span> - The most traditional wedding gift of all time that your ancestors must have been buying as a gift. Crockery never disappoints as a stylish and unique wedding gift. Dinner sets, ceramics, dining decors - all fall under this category and remains one of the topmost choices of people while selecting a wedding gift.</p>
+    <p class="my-4"> <span>Electronic gadgets</span> - If the newly-wed couple is a gadget freak and likes to keep themselves updated with the latest technologies then what can be a better gift than some mind-boggling electronic gadgets. Go for phones, couple watches, speakers, health kits, or a grand sound system. Look out for their taste and choose accordingly while keeping your budget in mind.</p>
+    <p class="my-4"> <span>Jewellery</span> - It's the most promisingly adorable wedding gift of all time. By jewellery, it does not always mean gold or diamond but you can always go for some unique bracelets, silver articles, or some special editions of designers brought out exclusively to match outfits. Unique pendants, bracelets, bangles, or anklets will make stunning wedding gifts and surely make an overwhelming gesture of your affection in front of the blessed couple and their families.</p>
+    <p class="my-4"> <span> Personalized gifts</span> - You can choose to personalize makeup sets, clothing sets, coffee mug sets, or go for a trendy couple statue. Getting their names, photographs or wedding date engraved on gifts will give an essence of personal touch and your customized idea will make a beautiful memento of love to them.</p>
+    
+    <h4 class="mb-4">Other Wedding Services We Provide</h4>
+    <h6><span>Wedding Photographers:</span> Capture the event without missing any precious moment.</h6>
+    <h6><span>Bridal Designers:</span>  Design your trousseau as per the latest fashion trends.</h6>
+    <h6><span>Choreographers:</span> Learn some new moves for your wedding.</h6>
+    <h6><span>Wedding Videographers:</span> Today wedding videos beat Bollywood movies.</h6>
+    <h6><span>Mehndi Artists:</span> What's a bride without some gorgeous mehendi?</h6>
+    <h6><span>Wedding Decorators:</span> Choose modern or traditional, let every corner look fabulous.</h6>
+    <h6><span>Wedding Invitations:</span> The invitation for the big day has to be special.</h6>
+    <h6><span>Wedding Planners:</span> Leave the planning to the experts in the field.</h6>
+    <h6><span>Wedding Venues:</span> Choose the venue that best suits you.</h6>
+</div>
+
+{% endblock %}

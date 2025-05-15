@@ -1,0 +1,278 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+    <style>
+        .blog-container .container{
+            max-width: 1200px;
+            margin-top: 70px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .main-content {
+            flex: 3;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 2fr));
+            gap: 20px;
+        }
+
+        .card {
+            background: #fff;
+            border: 1px solid #ddd;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+
+        .card img {
+            width: 100%;
+            height: 220px;
+        }
+
+        .card-content {
+            padding: 15px;
+        }
+
+        .card-content h3 {
+            font-size: 20px;
+            margin: 0 0 10px;
+            color: #333;
+        }
+
+        .card-content h6 {
+            font-size: 14px;
+            margin: 0 0 10px;
+        }
+
+        .card-content p {
+            font-size: 14px;
+            color: #666;
+            margin: 0;
+        }
+
+        .sidebar {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .sidebar-item {
+            background: #fff;
+            text-align: center;
+        }
+
+        .sidebar-item img {
+            max-width: 250px;
+            height: auto;
+            border-radius: 8px;
+        }
+
+        @media (max-width: 920px){
+            .sidebar {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .blog-container .container{
+                margin-top: 50px;
+            }
+            
+            .container {
+                flex-direction: column;
+            }
+
+            .card-content {
+                padding: 10px;
+            }
+
+            .card-content h3 {
+                font-size: 18px;
+            }
+
+            .card-content h6 {
+                font-size: 14px;
+            }
+
+            .card-content p {
+                font-size: 14px;
+            } 
+        }
+
+        @media (max-width: 450px){
+            .card img {
+                width: 100%;
+                height: 200px;
+            }
+
+            .card-content h3 {
+                font-size: 16px;
+            }
+
+            .card-content h6 {
+                font-size: 12px;
+            }
+
+            .card-content p {
+                font-size: 12px;
+            } 
+        }
+
+    </style>
+</head>
+<body>
+    <div class="blog-container">
+        <div class="container">
+            <!-- Main Content -->
+            <div class="main-content">
+                <div class="grid">
+                    <div class="card">
+                        <img src="{% static 'blog img/blog1.jpeg' %}" alt="Post Image">
+                        <div class="card-content">
+                            <h3>Enchanting Jim Corbett Wedding with a Pastel Palette & Whimsical Decor</h3>
+                            <h6>By HappyWedding | Dec 2024 | 5 min read</h6>
+                            <p>Tying the knot in a setting that felt as natural as your love story is every couples dream, and this couple made theirs a reality. Surrounded by the breathtaking beauty of Jim Corbetts forests...</p>
+                        </div>
+                    </div>
+    
+                    <div class="card">
+                        <img src="{% static 'blog img/blog2.jpeg' %}" alt="Post Image">
+                        <div class="card-content">
+                            <h3>Intimate Udaipur Wedding With A Minimal Luxe Vibe</h3>
+                            <h6>By HappyWedding | Nov 2024 | 5 min read</h6>
+                            <p>Minimal luxe- now that's supposed to be one of the trends for 2025 weddings! Destination weddings that are intimate and minimal yet luxurious- that is going to be the moodboard to achieve! Here is a...</p>
+                        </div>
+                    </div>
+    
+                    <div class="card">
+                        <img src="{% static 'blog img/blog3.jpeg' %}" alt="Post Image">
+                        <div class="card-content">
+                            <h3>Sangeet Diaries: 20+ Non-Cheesy Couple Songs For The Bride & Groom!</h3>
+                            <h6>By HappyWedding | Sep 2024 | 5 min read</h6>
+                            <p>With the wedding season in full swing, we're all probably counting down the number of weddings we've to attend, making us serial wedding attendees! And, if you are the one getting married, you know th...</p>
+                        </div>
+                    </div>
+    
+                    <div class="card">
+                        <img src="{% static 'blog img/blog4.jpeg' %}" alt="Post Image">
+                        <div class="card-content">
+                            <h3>Naga Chaitanya & Sobhita Dhulipala's Wedding Photos Are Wholesome!</h3>
+                            <h6>By HappyWedding | Dec 2024 | 5 min read</h6>
+                            <p>This has been one of the most anticipated South Indian celeb weddings off late, and it has finally happened! Sobhita Dhulipala and Naga Chaitanya have tied the knot, and their wedding photos are as w...</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="{% static 'blog img/blog5.jpeg' %}" alt="Post Image">
+                        <div class="card-content">
+                            <h3>Enchanting Beachside Anand Karaj In A Soft, Pastel Paradise</h3>
+                            <h6>By HappyWedding | Apr 2024 | 5 min read</h6>
+                            <p>A beautiful couple, a gorgeous beach and a pretty pastel setting- can it get better than that? Shivani and Kerman had their ethereal beachside wedding in Thailand, and it's one that has us floored! ...</p>
+                        </div>
+                    </div>
+    
+                    <div class="card">
+                        <img src="{% static 'blog img/blog6.jpeg' %}" alt="Post Image">
+                        <div class="card-content">
+                            <h3>Turn Your Luxury Wedding Dreams To Reality at Palazzo Versace Dubai</h3>
+                            <h6>By HappyWedding | Oct 2024 | 5 min read</h6>
+                            <p>Dubai is one of the dreamiest destinations for weddings, especially for those seeking something royal and luxurious. Offering a blend of breathtaking venues- from pristine beaches to glamorous citysc...</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="{% static 'blog img/blog7.jpeg' %}" alt="Post Image">
+                        <div class="card-content">
+                            <h3>Totally In Love With Aditi Rao Hydari & Siddharth's Stunning Wedding!</h3>
+                            <h6>By HappyWedding | Nov 2024 | 5 min read</h6>
+                            <p>Ok, so they didn't just have an intimate temple wedding, they had a destination wedding too! Southern sweethearts Aditi Rao Hydari and Sidharth just dropped some new wedding photos, and let's just...</p>
+                        </div>
+                    </div>
+    
+                    <div class="card">
+                        <img src="{% static 'blog img/blog8.jpeg' %}" alt="Post Image">
+                        <div class="card-content">
+                            <h3>Bridal Breakdown: Real Bride Seerat</h3>
+                            <h6>By HappyWedding | Dec 2024 | 5 min read</h6>
+                            <p>Now here's a bride who knocked it out of the park for each of her wedding events! From a demure pastel look for the wedding to a beautiful and elegant look in mint for her mehendi, Real Bride Seerat'...</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="{% static 'blog img/blog9.jpeg' %}" alt="Post Image">
+                        <div class="card-content">
+                            <h3>A Palace Wedding Straight Out Of A Modern Fairytale</h3>
+                            <h6>By HappyWedding | Mar 2024 | 5 min read</h6>
+                            <p>If a dreamy white wedding is your wishlist and your moodboard, then here is one that might give you the inspiration you need! Shelly and Ishan's regal pastel wedding at Noormahal Palace in Karnal wa...</p>
+                        </div>
+                    </div>
+    
+                    <div class="card">
+                        <img src="{% static 'blog img/blog10.jpeg' %}" alt="Post Image">
+                        <div class="card-content">
+                            <h3>Unique Decor Themes You Wouldn't Have Heard Of Before!</h3>
+                            <h6>By HappyWedding | Jul 2024 | 5 min read</h6>
+                            <p>Planning your dream wedding and looking for unique ways to make it stand out? The dcor you choose sets the tone for the entire celebration, and modern Indian weddings are pushing the boundaries with...</p>
+                        </div>
+                    </div>
+
+                    <div class="card">
+                        <img src="{% static 'blog img/blog11.jpeg' %}" alt="Post Image">
+                        <div class="card-content">
+                            <h3>Unique Art-Inspired Mumbai Wedding With A Beautiful Proposal Story</h3>
+                            <h6>By HappyWedding | Aug 2024 | 5 min read</h6>
+                            <p>How do we even begin to describe this wedding? A perfect blend of tradition and individuality, Puja and Jais celebration was deeply personal and thoughtfully curated. From the invitations- fe...</p>
+                        </div>
+                    </div>
+    
+                    <div class="card">
+                        <img src="{% static 'blog img/blog12.jpeg' %}" alt="Post Image">
+                        <div class="card-content">
+                            <h3>Romantic Sunset Wedding In Goa With A Personalised Touch</h3>
+                            <h6>By HappyWedding | Oct 2024 | 5 min read</h6>
+                            <p>Pastel weddings are still trending hard, and when the ambience is right by the beach with a sunset ceremony, then it all looks ethereal! Neha and Raheel's wedding was full of all things pretty and p...</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Sidebar -->
+            <aside class="sidebar">
+                <div class="sidebar-item">
+                    <img src="{% static 'blog img/side-img1.jpeg' %}" alt="Instagram Promo">
+                </div>
+                <div class="sidebar-item">
+                    <img src="{% static 'blog img/side-img2.jpeg' %}" alt="Instagram Promo">
+                </div>
+                <div class="sidebar-item">
+                    <img src="{% static 'blog img/side-img3.jpeg' %}" alt="Instagram Promo">
+                </div>
+                <div class="sidebar-item">
+                    <img src="{% static 'blog img/side-img4.jpeg' %}" alt="Instagram Promo">
+                </div>
+                <div class="sidebar-item">
+                    <img src="{% static 'blog img/side-img5.jpeg' %}" alt="Instagram Promo">
+                </div>
+                <div class="sidebar-item">
+                    <img src="{% static 'blog img/side-img6.jpeg' %}" alt="Instagram Promo">
+                </div>
+                <div class="sidebar-item">
+                    <img src="{% static 'blog img/side-img7.jpeg' %}" alt="Instagram Promo">
+                </div>
+            </aside>
+        </div>
+    </div>
+</body>
+</html>
+
+
+{% endblock %}

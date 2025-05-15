@@ -1,0 +1,220 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <style>
+        .review-container {
+            background-image: url("{% static 'Categories/hero.jpeg' %}");
+            background-size: cover;
+            background-position: center;
+            margin-top: 78px;
+            min-height: 90vh;
+            padding: 20px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .form-container {
+            background: #fff;
+            width: 100%;
+            max-width: 750px;
+            padding:30px 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-container h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            color: #333;
+            text-align: center;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            width: 100%;
+        }
+
+        .form-group label {
+            font-size: 16px;
+            font-weight: bold;
+            color: #555;
+            margin-bottom: 8px;
+            display: block;
+        }
+
+        .form-group input[type="text"],
+        .form-group textarea,
+        .form-group input[type="number"] {
+            width: 100%;
+            padding: 12px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus {
+            border-color: #eb1d4b;
+        }
+
+        .rating {
+            display: flex;
+            flex-direction: row-reverse;
+            justify-content: start;
+            gap: 8px;
+        }
+
+        .rating input {
+            display: none;
+        }
+
+        .rating label {
+            color: #ccc;
+            cursor: pointer;
+            font-size: 20px;
+            transition: color 0.3s ease;
+        }
+
+        .rating label:hover,
+        .rating label:hover ~ label {
+            color: #eb1d4b;
+        }
+
+        .rating input:checked ~ label {
+            color: #eb1d4b;
+        }
+
+        .form-actions {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .form-actions button {
+            padding: 12px 20px;
+            font-size: 16px;
+            background: #eb1d4b;
+            border: none;
+            border-radius: 5px;
+            color: #fff;
+            cursor: pointer;
+        }
+
+        @media (max-width: 1030px) {
+            .review-container {
+                margin-top: 78px;
+                min-height: 72vh;
+            }
+        }
+
+        @media (max-width: 860px) {
+            .review-container {
+                margin-top: 68px;
+                min-height: 72vh;
+            }
+
+            .form-container h1 {
+                font-size: 20px;
+            }
+
+            .form-group label {
+                font-size: 14px;
+            }
+
+            .form-group input[type="text"],
+            .form-group textarea,
+            .form-group input[type="number"] {
+                font-size: 14px;
+                padding: 10px;
+            }
+
+            .form-actions button {
+                font-size: 14px;
+            }
+
+            .rating label {
+                font-size: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .review-container {
+                margin-top: 64px;
+                min-height: 93vh;
+                padding: 40px 12px;
+            }
+
+            .form-container {
+                padding: 20px;
+            }
+
+            .form-container h1 {
+                font-size: 18px;
+            }
+
+            .rating label {
+                gap: 5px;
+                font-size: 18px;
+            }
+
+            .form-actions button {
+                font-size: 12px;
+                padding: 10px 15px;
+            }
+        }
+
+    </style>
+
+    <div class="review-container">
+        <div class="form-container">
+            <h1>Write a Review for Your Vendors</h1>
+            <form method="POST" action="{% url 'index' %}" onsubmit="return showAlert()">
+                {% csrf_token %}
+                <div class="form-group">
+                    <label for="vendor-name">Select a Vendor<span aria-hidden="true">*</span></label>
+                    <input type="text" id="vendor-name" name="vendor_name" placeholder="Type vendor name" required>
+                </div>
+                <div class="form-group">
+                    <label>Rate Vendor<span aria-hidden="true">*</span></label>
+                    <div class="rating">
+                        <input type="radio" id="star1" name="rating" value="1" required>
+                        <label for="star1" aria-label="1 Star">★</label>
+                        <input type="radio" id="star2" name="rating" value="2">
+                        <label for="star2" aria-label="2 Stars">★</label>
+                        <input type="radio" id="star3" name="rating" value="3">
+                        <label for="star3" aria-label="3 Stars">★</label>
+                        <input type="radio" id="star4" name="rating" value="4">
+                        <label for="star4" aria-label="4 Stars">★</label>
+                        <input type="radio" id="star5" name="rating" value="5">
+                        <label for="star5" aria-label="5 Stars">★</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="experience">Tell us about your experience<span aria-hidden="true">*</span></label>
+                    <textarea id="experience" name="experience" rows="3" placeholder="Share your experience here..." required></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="cost">How much did you spend on this vendor?</label>
+                    <input type="number" id="cost" name="cost" placeholder="Enter amount" min="0">
+                </div>
+           
+                <div class="form-actions">
+                    <button type="submit">Submit Review</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        showAlert=()=>{
+            alert("Your review has been submitted");
+            return true;
+        }
+    </script>
+
+{% endblock %}

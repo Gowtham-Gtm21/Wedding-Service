@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .transparent-bg {
+        background-image: url("{% static 'Categories/decoration.jpeg' %}");
+        background-size: cover;
+        width: 96%;
+        height:88vh;
+        background-position: center;
+    }
+
+    .row,.title{
+        margin-top: 40px;
+        justify-content: space-between;
+    }
+    
+    .badge,.review{
+        font-size: 16px;
+    }
+
+    span, .stars, .price{
+        color: #eb1d4b;
+    }
+
+    .place{
+        color: #454545;
+        font-size: 15px;
+        margin: -8px 0px;
+    }
+
+    .btn{
+        margin-top: -7px;
+    }
+
+    @media(max-width: 1150px) {
+        .transparent-bg {
+            height: 50vh;
+        }
+
+        .row{
+            justify-content: space-around;
+        }
+
+    }
+
+    @media(max-width: 550px) {
+        .transparent-bg {
+            height: 40vh;
+        }
+
+        h3{
+            font-size: 22px;
+        }
+
+        .description,.badge,.review,.btn{
+            font-size: 14px;
+        }
+
+        h4,.card-title,.price{
+            font-size: 18px;
+        }
+
+        p,h6{
+            font-size: 14px;
+        }
+        
+    }
+
+</style>
+
+<div class="container-fluid transparent-bg"></div>
+
+<div class="container">
+    <h3 class="title">Best Wedding Decorators </h3>
+    <h6 class="description my-3 text-secondary">See list of Best Wedding Decorators in all Indian cities Find and compare prices of premium and budget in Wedding Decorators. Get full quotations from Wedding Decorators in all Indian Cities for your requirements and see Portfolio, Reviews, Photos on HappyWedding.</h6>
+    <div class="row">
+        {% for i in dec %}
+            <div class="event-card">
+                <div class="card">
+                    <img src="{{i.img.url}}" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.name}} <span class="badge bg-danger position-absolute end-0 me-2">{{i.rate}}</span></h5>
+                        <p class="stars fs-5">&#9733;&#9733;&#9733;&#9733;&#9733;<span class="review text-secondary position-absolute end-0 me-2"> ({{i.review}} reviews)</span></p>
+                        <p class="place"><i class="fa-solid fa-location-dot"></i> {{i.place}}</p>
+                        <h5 class="card-text price mt-3">{{i.price}}<a href="{% url 'dec' %}" class="btn bg-danger text-light position-absolute end-0 me-2">View Deal</a></h5>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="container mb-5">
+    <h3 class="text-center">Best Wedding Decorators</h3>
+    <p class="my-4">For you have been dreaming about your wedding forever, it MUST look the prettiest. Country’s top wedding decorators in all Indian cities are listed below in almost all budgets. Both indoor and outdoor wedding decoration services are offered by these wedding decorators. Check out the pictures of their work and reviews to select your favourite one. Request a callback from us or contact the wedding decorators directly.</p>
+
+    <h4>Book The Best Wedding Decorators @ Happy Wedding</h4>
+    <p class="my-4">Just booking the venue is not enough. It is very important to <span>decorate</span> the wedding venue with flowers, linens, lights, candles and other decorative items. Every corner of your wedding venue must be done up nicely, especially the entrance. With artistic and nice decoration, you can make the venue look grand.</p>
+
+    <h4>Types of Services Offered by Wedding Decorators Near me</h4>
+    <p class="my-4"> <span>Indoor Decor</span> - If you are having an <span>indoor wedding function</span> , this will suit your needs. In this, the decorators will decorate the venue entrance, stage, mandap decoration. Some decorators may also do centerpiece decorations.</p>
+    <p class="my-4"> <span>Outdoor Decor</span> - The decoration will depend on the season and time of the day. The colors of the linen and flowers will be used suitably. Decorators will decorate the entrance, stage, mandap and also table decoration and centerpiece.</p>
+    
+    
+    <h4 class="mb-4">Other Wedding Services We Provide</h4>
+    <h6><span>Wedding Photographers:</span> Capture the event without missing any precious moment.</h6>
+    <h6><span>Bridal Designers:</span>  Design your trousseau as per the latest fashion trends.</h6>
+    <h6><span>Choreographers:</span> Learn some new moves for your wedding.</h6>
+    <h6><span>Wedding Videographers:</span> Today wedding videos beat Bollywood movies.</h6>
+    <h6><span>Mehndi Artists:</span> What's a bride without some gorgeous mehendi?</h6>
+    <h6><span>Wedding Decorators:</span> Choose modern or traditional, let every corner look fabulous.</h6>
+    <h6><span>Wedding Invitations:</span> The invitation for the big day has to be special.</h6>
+    <h6><span>Wedding Planners:</span> Leave the planning to the experts in the field.</h6>
+    <h6><span>Wedding Venues:</span> Choose the venue that best suits you.</h6>
+</div>
+
+{% endblock %}

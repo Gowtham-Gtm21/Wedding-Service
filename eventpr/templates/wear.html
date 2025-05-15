@@ -1,0 +1,119 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .transparent-bg {
+        background-image: url("{% static 'Categories/wear.jpeg' %}");
+        background-size: cover;
+        width: 96%;
+        height:88vh;
+        background-position: bottom;
+    }
+
+    .row,.title{
+        margin-top: 40px;
+        justify-content: space-between;
+    }
+    
+    .badge,.review{
+        font-size: 16px;
+    }
+
+    span, .stars, .price{
+        color: #eb1d4b;
+    }
+
+    .place{
+        color: #454545;
+        font-size: 15px;
+        margin: -8px 0px;
+    }
+
+    .btn{
+        margin-top: -7px;
+    }
+
+    @media(max-width: 1150px) {
+        .transparent-bg {
+            height: 50vh;
+        }
+
+        .row{
+            justify-content: space-around;
+        }
+
+    }
+
+    @media(max-width: 550px) {
+        .transparent-bg {
+            height: 40vh;
+        }
+
+        h3{
+            font-size: 22px;
+        }
+
+        .description,.badge,.review,.btn{
+            font-size: 14px;
+        }
+
+        h4,.card-title,.price{
+            font-size: 18px;
+        }
+
+        p,h6{
+            font-size: 14px;
+        }
+        
+    }
+
+
+</style>
+
+<div class="container-fluid transparent-bg"></div>
+
+<div class="container">
+    <h3 class="title">Best Wedding Wear</h3>
+    <h6 class="description my-3 text-secondary">List of Best Bridal Wear Designers in all Indian cities Find and compare prices of Bridal Lehenga designs, Anarkalis, Sarees, Wedding Wear. See Portfolio, Reviews and Photos of readymade or custom designed outfits by best Wedding Wear in all Indian cities on HappyWedding.</h6>
+    <div class="row">
+        {% for i in wea %}
+            <div class="event-card">
+                <div class="card">
+                    <img src="{{i.img.url}}" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.name}} <span class="badge bg-danger position-absolute end-0 me-2">{{i.rate}}</span></h5>
+                        <p class="stars fs-5">&#9733;&#9733;&#9733;&#9733;&#9733;<span class="review text-secondary position-absolute end-0 me-2"> ({{i.review}} reviews)</span></p>
+                        <p class="place"><i class="fa-solid fa-location-dot"></i> {{i.place}}</p>
+                        <h5 class="card-text price mt-3">{{i.price}}<a href="{% url 'wea' %}" class="btn bg-danger text-light position-absolute end-0 me-2">View Deal</a></h5>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="container mb-5">
+    <h3 class="text-center">Best Wedding Wear</h3>
+    <p class="my-4"> The wedding season is about to make our lives a little more joyful! Pretty people in classy wedding wear are about to get on to the wedding season soon. So, if you're also thinking of making a style statement at your loved one's wedding then you are exactly at the right place! Delhi is one of the hotspots of wedding wear in India. Right from simple dresses to fashionable outfits - Delhi has a lot to offer under the wedding wear category.</p>
+
+    <h4>Types of wedding wear in India</h4>
+    <p class="my-4"> <span>Sarees</span> - The most authentic wedding wear of all time, loved by women for ages. Are you even attending an Indian wedding if you don't notice a couple of women dressed in gorgeous sarees? The easiest to go wedding wear option renownedly picked by women across the country to attend a wedding function. There are a variety of styles, materials, designs, and artwork available in the saree category under the best wedding wear section. Silk saree, chiffon saree, kanjivaram saree, satin saree, jamdani saree, nauvari saree, etc. </p>
+    <p class="my-4"> <span>Lehengas</span> - The lehenga game can never flop! Lehengas are the heart of any wedding function. The twirl, the frills, and of course the charm one feels after adorning a lehenga for a wedding function is just mesmerizing. Different styles of lehengas in unique shades and colors look stunning as wedding wear. The trendiest lehenga designs are loved by women and remain one of the top weddings wears of all time.</p>
+    <p class="my-4"> <span>Anarkalis</span> - Anarkalis are an elegant category of wedding wear that make outstanding style statements when pulled off for a special wedding. Anarkalis definitely catch an eye for its styles and designs. The meshwork, a mix of hues, stonework, and handmade embroidery makes it even more beautiful and add a subtle charm to your overall look for attending a wedding function.</p>
+    <p class="my-4"> <span>Gowns</span> - A beautiful gown can easily be flaunted by any age group. From mother to daughter, anyone can easily pull off a gown as wedding wear. A gown is easy to handle and manage while attending the wedding function. Looks stylish and trendy as well. The twirl of a gown can make it even more eye-pleasing and also look stunning while capturing pictures.</p>
+    
+    <h4 class="mb-4">Other Wedding Services We Provide</h4>
+    <h6><span>Wedding Photographers:</span> Capture the event without missing any precious moment.</h6>
+    <h6><span>Bridal Designers:</span>  Design your trousseau as per the latest fashion trends.</h6>
+    <h6><span>Choreographers:</span> Learn some new moves for your wedding.</h6>
+    <h6><span>Wedding Videographers:</span> Today wedding videos beat Bollywood movies.</h6>
+    <h6><span>Mehndi Artists:</span> What's a bride without some gorgeous mehendi?</h6>
+    <h6><span>Wedding Decorators:</span> Choose modern or traditional, let every corner look fabulous.</h6>
+    <h6><span>Wedding Invitations:</span> The invitation for the big day has to be special.</h6>
+    <h6><span>Wedding Planners:</span> Leave the planning to the experts in the field.</h6>
+    <h6><span>Wedding Venues:</span> Choose the venue that best suits you.</h6>
+</div>
+
+{% endblock %}

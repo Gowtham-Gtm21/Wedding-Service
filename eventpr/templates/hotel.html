@@ -1,0 +1,122 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .transparent-bg {
+        background-image: url("{% static 'Categories/hotel.jpeg' %}");
+        background-size: cover;
+        width: 96%;
+        height:88vh;
+        background-position: center;
+    }
+
+    .row,.title{
+        margin-top: 40px;
+        justify-content: space-between;
+    }
+    
+    .badge,.review{
+        font-size: 16px;
+    }
+
+    span, .stars, .price{
+        color: #eb1d4b;
+    }
+
+    .place{
+        color: #454545;
+        font-size: 15px;
+        margin: -8px 0px;
+    }
+
+    .btn{
+        margin-top: -7px;
+    }
+
+    @media(max-width: 1150px) {
+        .transparent-bg {
+            height: 50vh;
+        }
+
+        .row{
+            justify-content: space-around;
+        }
+
+    }
+
+    @media(max-width: 550px) {
+        .transparent-bg {
+            height: 40vh;
+        }
+
+        h3{
+            font-size: 22px;
+        }
+
+        .description,.badge,.review,.btn{
+            font-size: 14px;
+        }
+
+        h4,.card-title,.price{
+            font-size: 18px;
+        }
+
+        p,h6{
+            font-size: 14px;
+        }
+        
+    }
+
+
+</style>
+
+<div class="container-fluid transparent-bg"></div>
+
+<div class="container">
+    <h3 class="title">Best Wedding Venues</h3>
+    <h6 class="description my-3 text-secondary">See list of Best Wedding Venues in all Indian cities Find and compare Banquet Halls, Farmhouses, Hotels, Resorts and Wedding Venues. See Prices, Capacity, Food Policy, Reviews, of best Wedding Venues in all Indian cities, Schedule a visit with HappyWedding venue manager to get best deal!.</h6>
+    <div class="row">
+        {% for i in ven %}
+            <div class="event-card">
+                <div class="card">
+                    <img src="{{i.img.url}}" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.name}} <span class="badge bg-danger position-absolute end-0 me-2">{{i.rate}}</span></h5>
+                        <p class="stars fs-5">&#9733;&#9733;&#9733;&#9733;&#9733;<span class="review text-secondary position-absolute end-0 me-2"> ({{i.review}} reviews)</span></p>
+                        <p class="place"><i class="fa-solid fa-location-dot"></i> {{i.place}}</p>
+                        <h5 class="card-text price mt-3">{{i.price}}<a href="{% url 'ven' %}" class="btn bg-danger text-light position-absolute end-0 me-2">View Deal</a></h5>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="container mb-5">
+    <h3 class="text-center">Best Wedding Venues</h3>
+    <p class="my-4"> Weddings in India are grand and the rich heritage of the country offers the most exotic locations to tie a knot in. Beaches, mountains, or woods, you find it all in India. Over the years, the Indian wedding industry has crafted some gorgeous wedding venues for you to get married in. We did the hard work to bring to you the best wedding venues in India at the best possible prices. Browse through the list to pick your favorite one and contact them directly.</p>
+
+    <h4>Find Best Wedding Venues @ Happy Wedding</h4>
+    <p class="my-4">The wedding in India is huge. Indians celebrate their wedding to the fullest and we, at HappyWedding, make sure that happens. The very first step to a successful wedding plan is to look for a <span>gorgeous wedding venue</span>. Step out to look for a wedding venue in India and you will be bombarded with numerous options of the most gorgeous locations.</p>
+
+    <h4>Types of Wedding Venues</h4>
+    <p class="my-4"> <span>Hotel Wedding Venues</span> - Much like the banquet halls, the staff working in these hotels know what they are doing. These venues have a major advantage of letting your outstation guests stay at your venue making them more comfortable and happy. Additionally, grand hotels have spaces to host events like your engagement and reception ceremonies. </p>
+    <p class="my-4"> <span>Wedding Resorts</span> - Outdoor weddings are the favorite ones especially in summers, springs, or even autumns. A resort, for a gorgeous outdoor wedding, simply cannot go wrong. The entertainment options are the raw prettiness of these resorts make them the go-to options for the couples who want a pleasant and gorgeous wedding.</p>
+    <p class="my-4"> <span>Banquet halls</span> - Banquet halls are spaces designed to especially to host your grand affairs in. It is made with all the amenities that you require and the staff present at the venue are well versed in their jobs. Weddings in banquet halls are the most extravagant ones with minimal hard work.</p>
+    <p class="my-4"> <span>Great Royal Palaces</span> - The most prestigious rulers set up their empire and built aesthetically pleasing palaces in the country. These palaces have turned into the most popular wedding locations in modern-day India with couples wanting to add the royal touch to their wedding.</p>
+    
+    <h4 class="mb-4">Other Wedding Services We Provide</h4>
+    <h6><span>Wedding Photographers:</span> Capture the event without missing any precious moment.</h6>
+    <h6><span>Bridal Designers:</span>  Design your trousseau as per the latest fashion trends.</h6>
+    <h6><span>Choreographers:</span> Learn some new moves for your wedding.</h6>
+    <h6><span>Wedding Videographers:</span> Today wedding videos beat Bollywood movies.</h6>
+    <h6><span>Mehndi Artists:</span> What's a bride without some gorgeous mehendi?</h6>
+    <h6><span>Wedding Decorators:</span> Choose modern or traditional, let every corner look fabulous.</h6>
+    <h6><span>Wedding Invitations:</span> The invitation for the big day has to be special.</h6>
+    <h6><span>Wedding Planners:</span> Leave the planning to the experts in the field.</h6>
+    <h6><span>Wedding Venues:</span> Choose the venue that best suits you.</h6>
+</div>
+
+{% endblock %}

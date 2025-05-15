@@ -1,0 +1,120 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+
+<style>
+    .transparent-bg {
+        background-image: url("{% static 'Categories/mehndi.jpeg' %}");
+        background-size: cover;
+        width: 96%;
+        height:88vh;
+        background-position: center;
+    }
+
+    .row,.title{
+        margin-top: 40px;
+        justify-content: space-between;
+    }
+    
+    .badge,.review{
+        font-size: 16px;
+    }
+
+    span, .stars, .price{
+        color: #eb1d4b;
+    }
+
+    .place{
+        color: #454545;
+        font-size: 15px;
+        margin: -8px 0px;
+    }
+
+    .btn{
+        margin-top: -7px;
+    }
+
+    @media(max-width: 1150px) {
+        .transparent-bg {
+            height: 50vh;
+        }
+
+        .row{
+            justify-content: space-around;
+        }
+
+    }
+
+    @media(max-width: 550px) {
+        .transparent-bg {
+            height: 40vh;
+        }
+
+        h3{
+            font-size: 22px;
+        }
+
+        .description,.badge,.review,.btn{
+            font-size: 14px;
+        }
+
+        h4,.card-title,.price{
+            font-size: 18px;
+        }
+
+        p,h6{
+            font-size: 14px;
+        }
+        
+    }
+
+
+</style>
+
+<div class="container-fluid transparent-bg"></div>
+
+<div class="container">
+    <h3 class="mt-5">Best Mehndi Artists</h3>
+    <h6 class="description my-3 text-secondary">See list of Best Bridal Mehndi Artists in all Indian cities Find and compare prices of wedding bridal Mehndi Artists. See Portfolio, Reviews, Photos, Latest mehndi designs of Bridal Mehndi Artists in all Indian cities and find best mehndi designs for wedding on mehndi blog.</h6>
+    <div class="row mt-5">
+        {% for i in meh %}
+            <div class="event-card">
+                <div class="card">
+                    <img src="{{i.img.url}}" class="card-img-top" alt="">
+                    <div class="card-body">
+                        <h5 class="card-title">{{i.name}} <span class="badge bg-danger position-absolute end-0 me-2">{{i.rate}}</span></h5>
+                        <p class="stars fs-5">&#9733;&#9733;&#9733;&#9733;&#9733;<span class="review text-secondary position-absolute end-0 me-2"> ({{i.review}} reviews)</span></p>
+                        <p class="place"><i class="fa-solid fa-location-dot"></i> {{i.place}}</p>
+                        <h5 class="card-text price mt-3">₹{{i.price}}<a href="{% url 'meh' %}" class="btn bg-danger text-light position-absolute end-0 me-2">View Deal</a></h5>
+                    </div>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</div>
+
+<div class="container mb-5">
+    <h3 class="text-center">Best Mehndi Artists</h3>
+    <p class="my-4">Your bridal look ain't complete without some gorgeous-looking mehndi adorning your hands and feet. The best mehndi artists in all Indian cities are listed down below along with the photos of their work and reviews. Both budget-friendly and luxurious mehndi artists are mentioned in all categories for you to select your favourite one. Contact your artist directly or request a callback from us.</p>
+
+    <h4>Book Best Bridal Mehndi Artists @ Happy Wedding</h4>
+    <p class="my-4">In Indian marriages, we cannot image a bride without mehndi. Bridal Mehndi has been in our culture since ages and is sure to stay forever. Today, you can easily choose <span>the best Mehndi designs for bridal</span> from the collections of professional Mehndi artists. They also provide Mehndi services for your relatives and family members for the special day. at HappyWedding, we want to put a smile on your face, every time you look at your hands. Hence, we bring to you a plethora of awe-inspiring mehndi artists for your special day. We have the some <span>professional mehndi artist</span> who can do wonders with your request.</p>
+
+    <h4>Types of Services Offered By Mehndi Artists</h4>
+    <p class="my-4"> <span>Bridal Mehndi</span> - This service includes applying mehndi on full arms and half legs of the bride. You can choose from various styles and designs like traditional Indian mehndi designs, Rajasthani designs, Arabic mehndi designs, Pakistani mehndi designs, Indo-Arabic and Moroccan mehndi designs. Then you also have the high-tech glitter mehndi, mughlai mehndi, and multi-coloured mehndi designs.</p>
+    <p class="my-4"> <span>Guest Mehndi</span> - All the female guests also put mehndi during the mehndi function. These include family members, relatives, and bridesmaid. In this, mehndi designs are applied only on hands usually. Also the designs are not very intricate. This is done by the junior bridal mehndi artist and the cost is much lesser than bridal mehndi.</p>
+
+    <h4 class="mb-4">Other Wedding Services We Provide</h4>
+    <h6><span>Wedding Photographers:</span> Capture the event without missing any precious moment.</h6>
+    <h6><span>Bridal Designers:</span>  Design your trousseau as per the latest fashion trends.</h6>
+    <h6><span>Choreographers:</span> Learn some new moves for your wedding.</h6>
+    <h6><span>Wedding Videographers:</span> Today wedding videos beat Bollywood movies.</h6>
+    <h6><span>Mehndi Artists:</span> What's a bride without some gorgeous mehendi?</h6>
+    <h6><span>Wedding Decorators:</span> Choose modern or traditional, let every corner look fabulous.</h6>
+    <h6><span>Wedding Invitations:</span> The invitation for the big day has to be special.</h6>
+    <h6><span>Wedding Planners:</span> Leave the planning to the experts in the field.</h6>
+    <h6><span>Wedding Venues:</span> Choose the venue that best suits you.</h6>
+</div>
+
+{% endblock %}
